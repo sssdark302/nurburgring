@@ -1,0 +1,13 @@
+@startuml
+autonumber
+actor usuario
+usuario -> "Controlador" : Pasa lista de compras
+"Controlador" -> "Servicio" : Leer la lista de compras
+"Servicio" -> "Repositorio" : Guardar la lista de compras
+"Repositorio" -> "Servicio" : Empezar a buscar productos
+"Servicio" -> "Scripts" : Buscar productos
+"Scripts" -> "Servicio" : Enviar productos encontrados
+"Servicio" -> "Controlador" : Enviar productos encontrados
+"Controlador" -> usuario : Mostrar recorrido optimo
+
+@enduml
