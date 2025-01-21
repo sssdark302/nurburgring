@@ -1,13 +1,16 @@
 @startuml
 autonumber
 actor usuario
-usuario -> "Controlador" : Pasa lista de compras
-"Controlador" -> "Servicio" : Leer la lista de compras
-"Servicio" -> "Repositorio" : Guardar la lista de compras
-"Repositorio" -> "Servicio" : Empezar a buscar productos
-"Servicio" -> "Scripts" : Buscar productos
-"Scripts" -> "Servicio" : Enviar productos encontrados
-"Servicio" -> "Controlador" : Enviar productos encontrados
-"Controlador" -> usuario : Mostrar recorrido optimo
+usuario -> "API" : determinar ubicacion del usuario
+usuario -> "Controlador" : pasa la lista
+"Controlador" -> "Servicio" : lee la lista de compras
+"Servicio" -> "Repositorio" : guarda la lista de compras
+"Repositorio" -> "Servicio" : "lista de compras guardada"
+"API" -> "Controlador": enviar ubicación
+"Controlador" -> "Servicio" : llamar al script
+"Servicio" -> "Scripts" : scraper de web
+"Scripts" -> "Servicio" : enviar productos encontrados que coinciden con la lista
+"Servicio" -> "Controlador" : enviar productos encontrados
+"Controlador" -> usuario : mostrar recorrido óptimo
 
 @enduml
